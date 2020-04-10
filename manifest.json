@@ -1,0 +1,33 @@
+{
+    "name": "Amazon",
+     "content_scripts": [
+     {
+       "matches": ["https://www.amazon.com/*"
+     ],
+      
+       "js": [ "content.js","jquery.js"]
+     }
+   ],
+     "permissions": [
+            "storage","tabs",
+            "https://www.amazon.com/*"
+          ],
+    "background" : {
+      "scripts" : [
+        "jquery.js", "background.js"]
+    },
+    "version": "1.0",
+     
+    "browser_action": {
+        "default_title": "Set products",
+        "default_icon": "amazon.png"
+    },
+    "icons": {
+        "128": "amazon.png",
+        "48": "amazon.png",
+        "16": "amazon.png"
+      },
+    
+    "manifest_version": 2
+  }
+  
