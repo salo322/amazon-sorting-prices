@@ -2,7 +2,7 @@ chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
           if (request.greeting == "hello"){
               
-          var btn1 = document.createElement('input')
+          let btn1 = document.createElement('input')
               btn1.value = "first";
               btn1.className = "firstB";
               btn1.type = 'submit';
@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener(
               btn1.style.height = '40px';
               btn1.style.border = 'none';
               btn1.style.borderRadius = '20px';
-          var amaz = document.querySelector('.nav-fill');
+          let amaz = document.querySelector('.nav-fill');
               console.log(amaz); 
               amaz.appendChild(btn1); 
           }
@@ -21,13 +21,19 @@ chrome.runtime.onMessage.addListener(
          
  
          function sortUsingNestedText(parent, childSelector, keySelector) {
-            var items = parent.children(childSelector).sort(function(a, b) {
-                var vA = parseInt($(keySelector, a).text());
-                var vB = parseInt($(keySelector, b).text());
+            let items = parent.children(childSelector).sort(function(a, b) {
+                let vA = parseInt($(keySelector, a).text());
+                let vB = parseInt($(keySelector, b).text());
                 return (vA < vB) ? -1 : (vA > vB) ? 1 : 0;
             });
             parent.html(items);
-            }               
+
+
+            chrome.storage.local.set({key: items}, function() {
+                console.log(items);
+              });
+            }  
+
   
 
             $(".firstB").click(function() {
